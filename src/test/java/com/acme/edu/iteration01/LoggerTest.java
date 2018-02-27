@@ -24,16 +24,18 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
 
     @Test
     public void shouldLogInteger() throws IOException {
-        //region when
+//        region when
         Logger.log(1);
         Logger.log(0);
         Logger.log(-1);
-        //endregion
+//        endregion
 
-        //region then
+//        region then
         assertSysoutContains("primitive: ");
-        assertSysoutEquals("primitive: 1\nprimitive: 0\nprimitive: -1\n");
-        //endregion
+        assertSysoutContains("primitive: 1");
+        assertSysoutContains("primitive: 0");
+        assertSysoutContains("primitive: -1");
+//        endregion
     }
 
     @Test
