@@ -2,7 +2,7 @@ package com.acme.edu;
 
 public class Logger {
 
-    private static int intState;
+    private static long intState;
 
     public static String addPrefix(int choice){
         switch (choice) {
@@ -28,7 +28,12 @@ public class Logger {
     }
 
     public static void log(int message) {
-        intState += message;
+        if(intState + message >= Integer.MAX_VALUE) {
+            intState = Integer.MAX_VALUE;
+        } else {
+            intState += message;
+        }
+
         printOut(1, intState);
 //        System.out.println(addPrefix(1) + message);
     }
