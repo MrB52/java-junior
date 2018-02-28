@@ -4,6 +4,8 @@ public class Logger {
 
     private static long byteState;
     private static long intState;
+    private static String stringState = "";
+    private static int stringRepeatCounter;
 
     public static String addPrefix(int choice){
         switch (choice) {
@@ -27,10 +29,13 @@ public class Logger {
     public static void flush() {
         intState = 0;
         byteState = 0;
+        stringState = "";
     }
 
     public static void log(int message) {
         byteState = 0;
+        stringState = "";
+        stringRepeatCounter = 0;
 
         if(intState + message >= Integer.MAX_VALUE) {
             intState = Integer.MAX_VALUE;
@@ -44,6 +49,8 @@ public class Logger {
 
     public static void log(byte message) {
         intState = 0;
+        stringState = "";
+        stringRepeatCounter = 0;
 
         if(byteState + message >= Byte.MAX_VALUE) {
             byteState = Byte.MAX_VALUE;
@@ -63,6 +70,17 @@ public class Logger {
     public static void log(String message) {
         byteState = 0;
         intState = 0;
+
+        stringState = message;
+        if(stringState.equals(message)) {
+            stringRepeatCounter++;
+        } else {
+            stringRepeatCounter = 0;
+        }
+
+        if(stringRepeatCounter > 1) {
+            message = message + " (x" + stringRepeatCounter + ")";
+        }
 
         printOut(3, message);
 //        System.out.println(addPrefix(3) + message);
