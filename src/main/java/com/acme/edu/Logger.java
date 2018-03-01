@@ -7,31 +7,31 @@ public class Logger {
     private static String stringState = "";
     private static int stringRepeatCounter;
 
-    public static String addPrefix(long messsage){
+    private static String addPrefix(long messsage){
         return "primitive: ";
     }
 
-    public static String addPrefix(char messsage){
+    private static String addPrefix(char messsage){
         return "char: ";
     }
 
-    public static String addPrefix(String messsage){
+    private static String addPrefix(String messsage){
         return "string: ";
     }
 
-    public static String addPrefix(Object messsage){
+    private static String addPrefix(Object messsage){
         return "reference: ";
     }
 
-    public static String addPrefix(boolean messsage){
+    private static String addPrefix(boolean messsage){
         return "primitive: ";
     }
 
-    public static String addPrefix(int[] messsage){
+    private static String addPrefix(int[] messsage){
         return "primitives array: ";
     }
 
-    public static String addPrefix(int[][] messsage){
+    private static String addPrefix(int[][] messsage){
         return "primitives matrix: ";
     }
 
@@ -56,32 +56,32 @@ public class Logger {
     }
 
     private static void printOut(int[] message) {
-        String buffer = "{";
+        StringBuilder buffer = new StringBuilder("{");
         if (message.length > 0) {
             for (int i = 0; i < message.length-1; i++) {
-                buffer += message[i] + ", ";
+                buffer.append(message[i]).append(", ");
             }
-            buffer += message[message.length-1];
+            buffer.append(message[message.length - 1]);
         }
-        buffer += "}";
+        buffer.append("}");
 
         System.out.println(addPrefix(message) + buffer);
     }
 
     private static void printOut(int[][] message){
-        String buffer = "{\n";
+        StringBuilder buffer = new StringBuilder("{\n");
         if(message.length > 0){
-            for (int i = 0; i < message.length; i++) {
-                buffer += "{";
+            for (int[] element : message) {
+                buffer.append("{");
 
-                for (int j = 0; j < message[i].length-1; j++) {
-                    buffer += message[i][j] + ", ";
+                for (int j = 0; j < element.length - 1; j++) {
+                    buffer.append(element[j]).append(", ");
                 }
 
-                buffer += message[i][message[i].length-1] + "}\n";
+                buffer.append(element[element.length - 1]).append("}\n");
             }
         }
-        buffer += "}";
+        buffer.append("}");
         System.out.println(addPrefix(message) + buffer);
     }
 
