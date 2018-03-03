@@ -6,6 +6,7 @@ public class Logger {
     private static long intState;
     private static String stringState = "";
     private static int stringRepeatCounter;
+    private static ConsoleProxyLogger consoleProxyLogger;
 
     private static String addPrefix(long messsage){
         return "primitive: ";
@@ -131,7 +132,8 @@ public class Logger {
     }
 
     public static void log(char message) {
-        printOut(message);
+        consoleProxyLogger = new ConsoleProxyLogger();
+        consoleProxyLogger.log(message);
     }
 
     public static void log(int[] message) {
