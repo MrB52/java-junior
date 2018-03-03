@@ -8,6 +8,20 @@ public class ConsoleProxyLogger {
     private PrefixAdder prefixAdder;
     private Printer printer = new ConsolePrinter();
 
+    public void log(byte message) {
+        prefixAdder = new PrimitivePrefixAdder();
+
+        MessageState.setByteMessageState(message);
+        printer.printOut(prefixAdder.addPrefix() + MessageState.getByteMessageState());
+    }
+
+    public void log(int message) {
+        prefixAdder = new PrimitivePrefixAdder();
+
+        MessageState.setIntMessageState(message);
+        printer.printOut(prefixAdder.addPrefix() + MessageState.getIntMessageState());
+    }
+
     public void log(int[] message) {
         prefixAdder = new PrimitiveArrayPrefixAdder();
         StringBuilder bufferedMessage = new StringBuilder("{");
@@ -46,6 +60,13 @@ public class ConsoleProxyLogger {
     public void log(char message) {
         prefixAdder = new CharPrefixAdder();
         printer.printOut(prefixAdder.addPrefix() + message);
+    }
+
+    public void log(String message) {
+        prefixAdder = new StringPrefixAdder();
+
+        MessageState.setStringMessageState(message);
+        printer.printOut(prefixAdder.addPrefix() + MessageState.getStringMessageState());
     }
 
     public void log(boolean message) {
