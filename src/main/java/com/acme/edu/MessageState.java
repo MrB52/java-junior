@@ -47,8 +47,8 @@ public class MessageState {
 
     /**
      * <p>Устанвливает значение счетчика для сообщения типа int.</p>
-     * <p>Максимальное значение аргумента byteMessageState равняется Integer.MAX_VALUE</p>
-     * <p>Минимальное значение аргумента byteMessageState равняется Integer.MIN_VALUE</p>
+     * <p>Максимальное значение аргумента intMessageState равняется Integer.MAX_VALUE</p>
+     * <p>Минимальное значение аргумента intMessageState равняется Integer.MIN_VALUE</p>
      * @param intMessageState значение счетчика сообщения типа int.
      */
     public static void setIntMessageState(long intMessageState) {
