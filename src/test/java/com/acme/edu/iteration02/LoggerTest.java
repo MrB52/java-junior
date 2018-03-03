@@ -2,6 +2,7 @@ package com.acme.edu.iteration02;
 
 import com.acme.edu.Logger;
 import com.acme.edu.SysoutCaptureAndAssertionAbility;
+import com.acme.edu.message.Flush;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,7 +34,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         Logger.log(2);
         Logger.log("str 2");
         Logger.log(0);
-        Logger.flush();
+        Flush.flush();
         //endregion
 
         //region then
@@ -53,7 +54,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         Logger.log(Integer.MAX_VALUE);
         Logger.log("str 2");
         Logger.log(0);
-        Logger.flush();
+        Flush.flush();
         //endregion
 
         //region then
@@ -73,7 +74,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         Logger.log(Byte.MAX_VALUE);
         Logger.log("str 2");
         Logger.log(0);
-        Logger.flush();
+        Flush.flush();
         //endregion
 
         //region then
@@ -96,7 +97,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         Logger.log("str 3");
         Logger.log("str 3");
         Logger.log("str 3");
-        Logger.flush();
+        Flush.flush();
         //endregion
 
         //region then

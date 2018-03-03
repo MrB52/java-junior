@@ -2,6 +2,7 @@ package com.acme.edu.iteration01;
 
 import com.acme.edu.Logger;
 import com.acme.edu.SysoutCaptureAndAssertionAbility;
+import com.acme.edu.message.Flush;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,15 +27,15 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     public void shouldLogInteger() throws IOException {
 //        region when
         Logger.log(1);
-        Logger.flush();
+        Flush.flush();
         Logger.log(0);
-        Logger.flush();
+        Flush.flush();
         Logger.log(-1);
-        Logger.flush();
+        Flush.flush();
 //        endregion
 
 //        region then
-        assertSysoutContains("primitive: ");
+       // assertSysoutContains("primitive: ");
         assertSysoutContains("primitive: 1");
         assertSysoutContains("primitive: 0");
         assertSysoutContains("primitive: -1");
@@ -45,18 +46,18 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     public void shouldLogByte() throws IOException {
         //region when
         Logger.log((byte)1);
-        Logger.flush();
+        Flush.flush();
         Logger.log((byte)0);
-        Logger.flush();
+        Flush.flush();
         Logger.log((byte)-1);
-        Logger.flush();
+        Flush.flush();
         //endregion
 
         //region then
-        assertSysoutContains("primitive: ");
-        assertSysoutContains("1");
-        assertSysoutContains("0");
-        assertSysoutContains("-1");
+        //assertSysoutContains("primitive: ");
+        assertSysoutContains("primitive: 1");
+        assertSysoutContains("primitive: 0");
+        assertSysoutContains("primitive: -1");
         //endregion
     }
 
@@ -81,9 +82,9 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     public void shouldLogString() throws IOException {
         //region when
         Logger.log("test string 1");
-        Logger.flush();
+        Flush.flush();
         Logger.log("other str");
-        Logger.flush();
+        Flush.flush();
         //endregion
 
         //region then
