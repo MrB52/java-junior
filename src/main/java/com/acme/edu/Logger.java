@@ -9,7 +9,7 @@ public class Logger {
     }
 
     public static void log(byte message) {
-    Printer.printOut(message);
+        Printer.printOut(message);
     }
 
     public static void log(char message) {
