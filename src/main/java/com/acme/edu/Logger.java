@@ -6,26 +6,14 @@ public class Logger {
     private static long intState;
     private static String stringState = "";
     private static int stringRepeatCounter;
-    private static ConsoleProxyLogger consoleProxyLogger;
+    private static ConsoleProxyLogger consoleProxyLogger = new ConsoleProxyLogger();
 
     private static String addPrefix(long messsage){
         return "primitive: ";
     }
 
-    private static String addPrefix(char messsage){
-        return "char: ";
-    }
-
     private static String addPrefix(String messsage){
         return "string: ";
-    }
-
-    private static String addPrefix(Object messsage){
-        return "reference: ";
-    }
-
-    private static String addPrefix(boolean messsage){
-        return "primitive: ";
     }
 
     private static String addPrefix(int[] messsage){
@@ -40,19 +28,7 @@ public class Logger {
         System.out.println(addPrefix(message) + message);
     }
 
-    private static void printOut(char message) {
-        System.out.println(addPrefix(message) + message);
-    }
-
     private static void printOut(String message) {
-        System.out.println(addPrefix(message) + message);
-    }
-
-    private static void printOut(Object message) {
-        System.out.println(addPrefix(message) + message);
-    }
-
-    private static void printOut(boolean message) {
         System.out.println(addPrefix(message) + message);
     }
 
@@ -84,6 +60,18 @@ public class Logger {
         }
         buffer.append("}");
         System.out.println(addPrefix(message) + buffer);
+    }
+
+    public static void log(char message) {
+        consoleProxyLogger.log(message);
+    }
+
+    public static void log(boolean message) {
+        consoleProxyLogger.log(message);
+    }
+
+    public static void log(Object message) {
+        consoleProxyLogger.log(message);
     }
 
     public static void flush() {
@@ -131,11 +119,6 @@ public class Logger {
         printOut(byteState);
     }
 
-    public static void log(char message) {
-        consoleProxyLogger = new ConsoleProxyLogger();
-        consoleProxyLogger.log(message);
-    }
-
     public static void log(int[] message) {
         printOut(message);
     }
@@ -155,14 +138,6 @@ public class Logger {
         if(stringRepeatCounter > 1) {
             message = message + " (x" + stringRepeatCounter + ")";
         }
-        printOut(message);
-    }
-
-    public static void log(boolean message) {
-        printOut(message);
-    }
-
-    public static void log(Object message) {
         printOut(message);
     }
 }
