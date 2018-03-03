@@ -1,5 +1,7 @@
 package com.acme.edu;
 
+import com.acme.edu.proxylogger.ConsoleProxyLogger;
+
 public class Logger {
     private static ConsoleProxyLogger consoleProxyLogger = new ConsoleProxyLogger();
 
