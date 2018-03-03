@@ -5,6 +5,11 @@ import com.acme.edu.prefix.*;
 import com.acme.edu.printer.ConsolePrinter;
 import com.acme.edu.printer.Printer;
 
+/**
+ * <code>ConsoleProxyLogger</code> - класс для логирования сообщений в консоль. Содержит один перегруженный метод log() для
+ * логирования сообщений соответствующего типа.
+ */
+
 public class ConsoleProxyLogger implements ProxyLogger{
     private PrefixAdder prefixAdder;
     private Printer printer = new ConsolePrinter();

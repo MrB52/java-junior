@@ -1,39 +1,46 @@
 package com.acme.edu;
 
 import com.acme.edu.proxylogger.ConsoleProxyLogger;
+import com.acme.edu.proxylogger.ProxyLogger;
+
+/**
+ * <code>Logger</code> - класс, предоставлющий внешний API для взаимодействия с приложением.
+ *
+ * <p>Содержит один перегруженный метод log(), предназначенный для логгирования сообщений</p>
+ */
 
 public class Logger {
-    private static ConsoleProxyLogger consoleProxyLogger = new ConsoleProxyLogger();
+    private static ProxyLogger proxyLogger = new ConsoleProxyLogger();
 
     public static void log(byte message) {
-        consoleProxyLogger.log(message);
+        proxyLogger.log(message);
     }
 
     public static void log(int message) {
-        consoleProxyLogger.log(message);
+        proxyLogger.log(message);
     }
 
     public static void log(int[] message) {
-        consoleProxyLogger.log(message);
+        proxyLogger.log(message);
     }
 
     public static void log(int[][] message) {
-        consoleProxyLogger.log(message);
+        proxyLogger.log(message);
     }
 
     public static void log(boolean message) {
-        consoleProxyLogger.log(message);
+        proxyLogger.log(message);
     }
 
     public static void log(char message) {
-        consoleProxyLogger.log(message);
+        proxyLogger.log(message);
     }
 
     public static void log(String message) {
-        consoleProxyLogger.log(message);
+        proxyLogger.log(message);
     }
 
     public static void log(Object message) {
-        consoleProxyLogger.log(message);
+        proxyLogger.log(message);
     }
 }

@@ -1,5 +1,8 @@
 package com.acme.edu.proxylogger;
 
+/**
+ * <code>ProxyLogger</code> - интерфейс логирования сообщений соответствующего типа.
+ */
 public interface ProxyLogger {
     void log(byte message);
 
