@@ -2,7 +2,7 @@ package com.acme.edu.iteration02;
 
 import com.acme.edu.Logger;
 import com.acme.edu.SysoutCaptureAndAssertionAbility;
-import com.acme.edu.message.BufferState;
+import com.acme.edu.message.method.BufferState;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

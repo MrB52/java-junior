@@ -1,4 +1,4 @@
-package com.acme.edu.message;
+package com.acme.edu.message.method;
 
 public class BufferState {
     static long byteState;
@@ -28,5 +28,6 @@ public class BufferState {
     public static void buffer(String message){
         byteState = 0;
         intState = 0;
+        stringState = message;
     }
 }

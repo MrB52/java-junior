@@ -1,49 +1,49 @@
-package com.acme.edu.message;
+package com.acme.edu.message.method;
 
 public class Method {
 
-    public static void IntMethod(int message) {
+    public static long IntMethod(int message) {
         BufferState.buffer(message);
-        if(BufferState.intState + message >= Integer.MAX_VALUE) {
-            BufferState.intState = Integer.MAX_VALUE;
+        if(Comparison.IntComparison(message)) {
+            return BufferState.intState = Integer.MAX_VALUE;
         } else {
-            BufferState.intState += message;
+            return BufferState.intState += message;
         }
     }
 
-    public static void ByteMethod(byte message) {
+    public static long ByteMethod(byte message) {
         BufferState.buffer(message);
-        if(BufferState.byteState + message >= Byte.MAX_VALUE) {
-            BufferState.byteState = Byte.MAX_VALUE;
+        if(Comparison.ByteComparison(message)) {
+            return BufferState.byteState = Byte.MAX_VALUE;
         } else {
-            BufferState.byteState += message;
+            return BufferState.byteState += message;
         }
     }
 
-    public static void StringMethod(String message) {
+    public static String StringMethod(String message) {
         BufferState.buffer(message);
-        BufferState.stringState = message;
         if(BufferState.stringState.equals(message)) {
             BufferState.stringRepeatCounter++;
         } else {
             BufferState.stringRepeatCounter = 0;
         }
         if(BufferState.stringRepeatCounter > 1) {
-            BufferState.stringState = message + " (x" + BufferState.stringRepeatCounter + ")";
+            return BufferState.stringState = message + " (x" + BufferState.stringRepeatCounter + ")";
         }
+        else return message;
     }
 
-    public static void ArrayMethod(int[] message) {
+    public static StringBuilder ArrayMethod(int[] message) {
         if (message.length > 0) {
             for (int i = 0; i < message.length-1; i++) {
                 BufferState.matrixState.append(message[i]).append(", ");
             }
             BufferState.matrixState.append(message[message.length - 1]);
         }
-        BufferState.matrixState.append("}");
+        return BufferState.matrixState.append("}");
     }
 
-    public static void MatrixMethod(int[][] message) {
+    public static StringBuilder MatrixMethod(int[][] message) {
         if(message.length > 0){
             for (int[] element : message) {
                 BufferState.matrixState.append("{");
@@ -55,6 +55,6 @@ public class Method {
                 BufferState.matrixState.append(element[element.length - 1]).append("}\n");
             }
         }
-        BufferState.matrixState.append("}");
+        return BufferState.matrixState.append("}");
     }
 }
