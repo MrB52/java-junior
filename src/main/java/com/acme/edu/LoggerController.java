@@ -12,7 +12,11 @@ import com.acme.edu.printer.Printer;
 
 public class LoggerController {
     private PrefixAdder prefixAdder;
-    private Printer printer = new ConsolePrinter();
+    private Printer printer;
+
+    public LoggerController(Printer printer) {
+        this.printer = printer;
+    }
 
     public void log(byte message) {
         prefixAdder = new PrimitivePrefixAdder();

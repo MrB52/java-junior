@@ -1,5 +1,7 @@
 package com.acme.edu;
 
+import com.acme.edu.printer.ConsolePrinter;
+
 /**
  * <code>Logger</code> - класс, предоставлющий внешний API для взаимодействия с приложением.
  *
@@ -7,7 +9,7 @@ package com.acme.edu;
  */
 
 public class Logger {
-    private static LoggerController loggerController = new LoggerController();
+    private static LoggerController loggerController = new LoggerController(new ConsolePrinter());
 
     public static void log(byte message) {
         loggerController.log(message);
