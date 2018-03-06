@@ -22,7 +22,7 @@ public class Method {
 
     public static String StringMethod(String message) {
         BufferState.buffer(message);
-        if(BufferState.stringState.equals(message)) {
+        if(Comparison.StringComparison(message)) {
             BufferState.stringRepeatCounter++;
         } else {
             BufferState.stringRepeatCounter = 0;
@@ -34,6 +34,7 @@ public class Method {
     }
 
     public static StringBuilder ArrayMethod(int[] message) {
+        BufferState.matrixState.append("{");
         if (message.length > 0) {
             for (int i = 0; i < message.length-1; i++) {
                 BufferState.matrixState.append(message[i]).append(", ");
@@ -45,14 +46,14 @@ public class Method {
 
     public static StringBuilder MatrixMethod(int[][] message) {
         if(message.length > 0){
-            for (int[] element : message) {
+            for (int[] i : message) {
                 BufferState.matrixState.append("{");
 
-                for (int j = 0; j < element.length - 1; j++) {
-                    BufferState.matrixState.append(element[j]).append(", ");
+                for (int j = 0; j < i.length - 1; j++) {
+                    BufferState.matrixState.append(i[j]).append(", ");
                 }
 
-                BufferState.matrixState.append(element[element.length - 1]).append("}\n");
+                BufferState.matrixState.append(i[i.length - 1]).append("}\n");
             }
         }
         return BufferState.matrixState.append("}");
