@@ -1,9 +1,7 @@
 package com.acme.edu;
 
-import com.acme.edu.MessageState;
 import com.acme.edu.message.LogMessage;
 import com.acme.edu.prefix.*;
-import com.acme.edu.printer.ConsolePrinter;
 import com.acme.edu.printer.Printer;
 
 /**
