@@ -1,6 +1,7 @@
 package com.acme.edu;
 
 import com.acme.edu.MessageState;
+import com.acme.edu.message.LogMessage;
 import com.acme.edu.prefix.*;
 import com.acme.edu.printer.ConsolePrinter;
 import com.acme.edu.printer.Printer;
@@ -12,6 +13,7 @@ import com.acme.edu.printer.Printer;
 
 public class LoggerController {
     private PrefixAdder prefixAdder; //TODO внети в реализации LogMessage
+    private LogMessage logMessage;
     private Printer printer;
 
     public LoggerController(Printer printer) {
