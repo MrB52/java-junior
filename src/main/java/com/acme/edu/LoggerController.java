@@ -11,7 +11,7 @@ import com.acme.edu.printer.Printer;
  */
 
 public class LoggerController {
-    private PrefixAdder prefixAdder;
+    private PrefixAdder prefixAdder; //TODO внети в реализации LogMessage
     private Printer printer;
 
     public LoggerController(Printer printer) {
