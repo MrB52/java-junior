@@ -27,11 +27,11 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     public void shouldLogInteger() throws IOException {
 //        region when
         Logger.log(1);
-        MessageState.flush();
+        Logger.flush();
         Logger.log(0);
-        MessageState.flush();
+        Logger.flush();
         Logger.log(-1);
-        MessageState.flush();
+        Logger.flush();
 //        endregion
 
 //        region then

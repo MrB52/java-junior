@@ -1,5 +1,6 @@
 package com.acme.edu;
 
+import com.acme.edu.message.IntLogMessage;
 import com.acme.edu.message.LogMessage;
 import com.acme.edu.prefix.*;
 import com.acme.edu.printer.Printer;
@@ -11,11 +12,19 @@ import com.acme.edu.printer.Printer;
 
 public class LoggerController {
     private PrefixAdder prefixAdder; //TODO внети в реализации LogMessage
-    private LogMessage logMessage;
+    private LogMessage previousLogMessage;
     private Printer printer;
 
     public LoggerController(Printer printer) {
         this.printer = printer;
+    }
+
+    public LogMessage getPreviousLogMessage() {
+        return previousLogMessage;
+    }
+
+    public void setPreviousLogMessage(LogMessage previousLogMessage) {
+        this.previousLogMessage = previousLogMessage;
     }
 
     public void log(byte message) {
@@ -25,11 +34,16 @@ public class LoggerController {
         printer.printOut(prefixAdder.addPrefix() + MessageState.getByteMessageState());
     }
 
-    public void log(int message) {
-        prefixAdder = new PrimitivePrefixAdder();
+    public void log(IntLogMessage intLogMessage) {
+        if(previousLogMessage == null || !intLogMessage.isTypeMatched(previousLogMessage)) {
+            printer.printOut(intLogMessage.toString());
+            return; //TODO а надо ли оно?
+        }
 
-        MessageState.setIntMessageState(message);
-        printer.printOut(prefixAdder.addPrefix() + MessageState.getIntMessageState());
+        previousLogMessage = new IntLogMessage(intLogMessage.getAccumulatedValue() +
+                ((IntLogMessage)previousLogMessage).getAccumulatedValue());
+
+        printer.printOut(previousLogMessage.toString());
     }
 
     public void log(int[] message) {

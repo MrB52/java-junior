@@ -12,4 +12,6 @@ public abstract class LogMessage {
     protected void setPrefixAdder(PrefixAdder prefixAdder) {
         this.prefixAdder = prefixAdder;
     }
+
+    public abstract boolean isTypeMatched(LogMessage logMessage);
 }
