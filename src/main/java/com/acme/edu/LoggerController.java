@@ -2,6 +2,7 @@ package com.acme.edu;
 
 import com.acme.edu.message.IntLogMessage;
 import com.acme.edu.message.LogMessage;
+import com.acme.edu.message.StringLogMessage;
 import com.acme.edu.prefix.*;
 import com.acme.edu.printer.Printer;
 
@@ -13,6 +14,8 @@ import com.acme.edu.printer.Printer;
 public class LoggerController {
     private PrefixAdder prefixAdder; //TODO внети в реализации LogMessage
     private LogMessage previousLogMessage;
+    private LogMessage bufferMessage;
+    private boolean lower = false;
     private Printer printer;
 
     public LoggerController(Printer printer) {
@@ -36,14 +39,15 @@ public class LoggerController {
 
     public void log(IntLogMessage intLogMessage) {
         if(previousLogMessage == null || !intLogMessage.isTypeMatched(previousLogMessage)) {
-            printer.printOut(intLogMessage.toString());
-            return; //TODO а надо ли оно?
+            previousLogMessage = intLogMessage;
+//            return; //TODO а надо ли оно?
+        } else {
+            previousLogMessage = new IntLogMessage(intLogMessage.getAccumulatedValue() +
+                    ((IntLogMessage)previousLogMessage).getAccumulatedValue());
         }
-
-        previousLogMessage = new IntLogMessage(intLogMessage.getAccumulatedValue() +
-                ((IntLogMessage)previousLogMessage).getAccumulatedValue());
-
-        printer.printOut(previousLogMessage.toString());
+        if(!intLogMessage.isTypeMatched(previousLogMessage)) {
+            printer.printOut(previousLogMessage.toString());
+        }
     }
 
     public void log(int[] message) {
@@ -91,11 +95,15 @@ public class LoggerController {
         printer.printOut(prefixAdder.addPrefix() + message);
     }
 
-    public void log(String message) {
-        prefixAdder = new StringPrefixAdder();
+    public void log(StringLogMessage stringLogMessage) {
+        if(previousLogMessage == null || !stringLogMessage.isTypeMatched(previousLogMessage)) {
+            previousLogMessage = stringLogMessage;
+        }
 
-        MessageState.setStringMessageState(message);
-        printer.printOut(prefixAdder.addPrefix() + MessageState.getStringMessageState());
+//        prefixAdder = new StringPrefixAdder();
+//
+//        MessageState.setStringMessageState(message);
+//        printer.printOut(prefixAdder.addPrefix() + MessageState.getStringMessageState());
     }
 
     public void log(Object message) {

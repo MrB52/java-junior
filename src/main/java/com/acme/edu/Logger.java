@@ -1,6 +1,7 @@
 package com.acme.edu;
 
 import com.acme.edu.message.IntLogMessage;
+import com.acme.edu.message.StringLogMessage;
 import com.acme.edu.printer.ConsolePrinter;
 
 /**
@@ -37,7 +38,7 @@ public class Logger {
     }
 
     public static void log(String message) {
-        loggerController.log(message);
+        loggerController.log(new StringLogMessage(message));
     }
 
     public static void log(Object message) {
