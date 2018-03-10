@@ -1,5 +1,7 @@
 package com.acme.edu.printer;
 
+import com.acme.edu.message.LogMessage;
+
 public interface Printer {
-    void printOut(String message); //TODO поменять параметр на LogMessage
+    void printOut(LogMessage message);
 }

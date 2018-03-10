@@ -1,7 +1,6 @@
 package com.acme.edu;
 
 import com.acme.edu.message.*;
-import com.acme.edu.prefix.*;
 import com.acme.edu.printer.Printer;
 
 /**
@@ -28,34 +27,34 @@ public class LoggerController {
     }
 
     public void log(ByteLogMessage message) {
-        printer.printOut(message.toString());
+        printer.printOut(message);
     }
 
     public void log(IntLogMessage message) {
-        printer.printOut(message.toString());
+        printer.printOut(message);
     }
 
     public void log(IntArrayLogMessage message) {
-        printer.printOut(message.toString());
+        printer.printOut(message);
     }
 
     public void log(IntMatrixLogMessage message) {
-        printer.printOut(message.toString());
+        printer.printOut(message);
     }
 
     public void log(BooleanLogMessage message) {
-        printer.printOut(message.toString());
+        printer.printOut(message);
     }
 
     public void log(CharLogMessage message) {
-        printer.printOut(message.toString());
+        printer.printOut(message);
     }
 
     public void log(StringLogMessage message) {
-        printer.printOut(message.toString());
+        printer.printOut(message);
     }
 
     public void log(ReferenceLogMessage message) {
-        printer.printOut(message.toString());
+        printer.printOut(message);
     }
 }
