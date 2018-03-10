@@ -1,7 +1,6 @@
 package com.acme.edu.iteration02;
 
 import com.acme.edu.Logger;
-import com.acme.edu.MessageState;
 import com.acme.edu.SysoutCaptureAndAssertionAbility;
 import org.junit.After;
 import org.junit.Before;
@@ -29,7 +28,6 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         Logger.log(2);
         Logger.log("str 2");
         Logger.log(0);
-        MessageState.flush();
 
         assertSysoutContains("str 1");
         assertSysoutContains("3");
@@ -39,13 +37,11 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
 
     @Test
     public void shouldLogCorrectlyIntegerOverflowWhenSequentIntegers() {
-
         Logger.log("str 1");
         Logger.log(10);
         Logger.log(Integer.MAX_VALUE);
         Logger.log("str 2");
         Logger.log(0);
-        MessageState.flush();
 
         assertSysoutContains("str 1");
         assertSysoutContains("10");
@@ -61,7 +57,6 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         Logger.log(Byte.MAX_VALUE);
         Logger.log("str 2");
         Logger.log(0);
-        MessageState.flush();
 
         assertSysoutContains("str 1");
         assertSysoutContains("10");
@@ -80,7 +75,6 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         Logger.log("str 3");
         Logger.log("str 3");
         Logger.log("str 3");
-        MessageState.flush();
 
         assertSysoutContains("str 1");
         assertSysoutContains("str 2 (x2)");

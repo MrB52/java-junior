@@ -31,17 +31,8 @@ public class LoggerController {
         printer.printOut(message.toString());
     }
 
-    public void log(IntLogMessage intLogMessage) {
-        if(previousLogMessage == null || !intLogMessage.isTypeMatched(previousLogMessage)) {
-            previousLogMessage = intLogMessage;
-//            return; //TODO а надо ли оно?
-        } else {
-            previousLogMessage = new IntLogMessage(intLogMessage.getAccumulatedValue() +
-                    ((IntLogMessage)previousLogMessage).getAccumulatedValue());
-        }
-        if(!intLogMessage.isTypeMatched(previousLogMessage)) {
-            printer.printOut(previousLogMessage.toString());
-        }
+    public void log(IntLogMessage message) {
+        printer.printOut(message.toString());
     }
 
     public void log(IntArrayLogMessage message) {
@@ -60,15 +51,8 @@ public class LoggerController {
         printer.printOut(message.toString());
     }
 
-    public void log(StringLogMessage stringLogMessage) {
-        if(previousLogMessage == null || !stringLogMessage.isTypeMatched(previousLogMessage)) {
-            previousLogMessage = stringLogMessage;
-        }
-
-//        prefixAdder = new StringPrefixAdder();
-//
-//        MessageState.setStringMessageState(message);
-//        printer.printOut(prefixAdder.addPrefix() + MessageState.getStringMessageState());
+    public void log(StringLogMessage message) {
+        printer.printOut(message.toString());
     }
 
     public void log(ReferenceLogMessage message) {
