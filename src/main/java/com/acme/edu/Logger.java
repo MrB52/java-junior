@@ -1,5 +1,6 @@
 package com.acme.edu;
 
+import com.acme.edu.message.CharLogMessage;
 import com.acme.edu.message.IntLogMessage;
 import com.acme.edu.message.ReferenceLogMessage;
 import com.acme.edu.message.StringLogMessage;
@@ -19,7 +20,7 @@ public class Logger {
     }
 
     public static void log(int message) {
-        loggerController.log(new IntLogMessage(message));
+        loggerController.log(new IntLogMessage(message)); //TODO сдеалть возможность добавлять префикс через конструктор
     }
 
     public static void log(int[] message) {
@@ -35,7 +36,7 @@ public class Logger {
     }
 
     public static void log(char message) {
-        loggerController.log(message);
+        loggerController.log(new CharLogMessage(message));
     }
 
     public static void log(String message) {

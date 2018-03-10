@@ -1,9 +1,6 @@
 package com.acme.edu;
 
-import com.acme.edu.message.IntLogMessage;
-import com.acme.edu.message.LogMessage;
-import com.acme.edu.message.ReferenceLogMessage;
-import com.acme.edu.message.StringLogMessage;
+import com.acme.edu.message.*;
 import com.acme.edu.prefix.*;
 import com.acme.edu.printer.Printer;
 
@@ -91,9 +88,8 @@ public class LoggerController {
         printer.printOut(prefixAdder.addPrefix() + message);
     }
 
-    public void log(char message) {
-        prefixAdder = new CharPrefixAdder();
-        printer.printOut(prefixAdder.addPrefix() + message);
+    public void log(CharLogMessage message) {
+        printer.printOut(message.toString());
     }
 
     public void log(StringLogMessage stringLogMessage) {
