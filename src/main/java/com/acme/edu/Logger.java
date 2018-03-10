@@ -21,7 +21,7 @@ public class Logger {
     }
 
     public static void log(int[] message) {
-        loggerController.log(message);
+        loggerController.log(new IntArrayLogMessage(message));
     }
 
     public static void log(int[][] message) {
@@ -29,7 +29,7 @@ public class Logger {
     }
 
     public static void log(boolean message) {
-        loggerController.log(new BooleanCharMessage(message));
+        loggerController.log(new BooleanLogMessage(message));
     }
 
     public static void log(char message) {

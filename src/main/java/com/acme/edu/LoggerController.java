@@ -48,19 +48,8 @@ public class LoggerController {
         }
     }
 
-    public void log(int[] message) {
-        prefixAdder = new PrimitiveArrayPrefixAdder();
-        StringBuilder bufferedMessage = new StringBuilder("{");
-
-        if (message.length > 0) {
-            for (int i = 0; i < message.length-1; i++) {
-                bufferedMessage.append(message[i]).append(", ");
-            }
-            bufferedMessage.append(message[message.length - 1]);
-        }
-        bufferedMessage.append("}");
-
-        printer.printOut(prefixAdder.addPrefix() + bufferedMessage);
+    public void log(IntArrayLogMessage message) {
+        printer.printOut(message.toString());
     }
 
     public void log(int[][] message) {
@@ -83,7 +72,7 @@ public class LoggerController {
         printer.printOut(prefixAdder.addPrefix() + bufferedMessage);
     }
 
-    public void log(BooleanCharMessage message) {
+    public void log(BooleanLogMessage message) {
         printer.printOut(message.toString());
     }
 
