@@ -1,9 +1,6 @@
 package com.acme.edu;
 
-import com.acme.edu.message.CharLogMessage;
-import com.acme.edu.message.IntLogMessage;
-import com.acme.edu.message.ReferenceLogMessage;
-import com.acme.edu.message.StringLogMessage;
+import com.acme.edu.message.*;
 import com.acme.edu.printer.ConsolePrinter;
 
 /**
@@ -32,7 +29,7 @@ public class Logger {
     }
 
     public static void log(boolean message) {
-        loggerController.log(message);
+        loggerController.log(new BooleanCharMessage(message));
     }
 
     public static void log(char message) {

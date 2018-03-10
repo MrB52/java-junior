@@ -83,9 +83,8 @@ public class LoggerController {
         printer.printOut(prefixAdder.addPrefix() + bufferedMessage);
     }
 
-    public void log(boolean message) {
-        prefixAdder = new PrimitivePrefixAdder();
-        printer.printOut(prefixAdder.addPrefix() + message);
+    public void log(BooleanCharMessage message) {
+        printer.printOut(message.toString());
     }
 
     public void log(CharLogMessage message) {
