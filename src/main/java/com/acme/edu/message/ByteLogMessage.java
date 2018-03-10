@@ -15,7 +15,7 @@ public class ByteLogMessage extends LogMessage {
         }
     }
 
-    public long getAccumulatedValue() {
+    public int getAccumulatedValue() {
         return accumulatedValue;
     }
 

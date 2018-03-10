@@ -28,9 +28,6 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         Logger.log("str 2");
         Logger.log(0);
         Logger.flush();
-//        Logger.flush();
-//        Logger.flush();
-//        Logger.flush();
 
         assertSysoutContains("str 1");
         assertSysoutContains("3");
@@ -45,6 +42,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         Logger.log(Integer.MAX_VALUE);
         Logger.log("str 2");
         Logger.log(0);
+        Logger.flush();
 
         assertSysoutContains("str 1");
         assertSysoutContains("10");
@@ -60,6 +58,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         Logger.log(Byte.MAX_VALUE);
         Logger.log("str 2");
         Logger.log(0);
+        Logger.flush();
 
         assertSysoutContains("str 1");
         assertSysoutContains("10");

@@ -35,7 +35,12 @@ public class LoggerController {
     }
 
     public void log(ByteLogMessage message) {
-        printer.printOut(message);
+        checkReadinessForPrintOut(message);
+
+        if (isAccumulatingNeeded(message)) {
+            previousLogMessage = new ByteLogMessage(((ByteLogMessage)previousLogMessage).getAccumulatedValue() +
+                    message.getAccumulatedValue());
+        }
     }
 
     public void log(IntLogMessage message) {
