@@ -13,7 +13,7 @@ public class Logger {
     private static LoggerController loggerController = new LoggerController(new ConsolePrinter());
 
     public static void log(byte message) {
-        loggerController.log(message);
+        loggerController.log(new ByteLogMessage(message));
     }
 
     public static void log(int message) {

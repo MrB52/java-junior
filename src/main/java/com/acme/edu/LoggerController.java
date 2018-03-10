@@ -10,7 +10,6 @@ import com.acme.edu.printer.Printer;
  */
 
 public class LoggerController {
-    private PrefixAdder prefixAdder; //TODO внети в реализации LogMessage
     private LogMessage previousLogMessage;
     private LogMessage bufferMessage;
     private boolean lower = false;
@@ -28,11 +27,8 @@ public class LoggerController {
         this.previousLogMessage = previousLogMessage;
     }
 
-    public void log(byte message) {
-        prefixAdder = new PrimitivePrefixAdder();
-
-        MessageState.setByteMessageState(message);
-        printer.printOut(prefixAdder.addPrefix() + MessageState.getByteMessageState());
+    public void log(ByteLogMessage message) {
+        printer.printOut(message.toString());
     }
 
     public void log(IntLogMessage intLogMessage) {
