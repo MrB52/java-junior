@@ -52,24 +52,8 @@ public class LoggerController {
         printer.printOut(message.toString());
     }
 
-    public void log(int[][] message) {
-        prefixAdder = new PrimitiveMatrixPrefixAdder();
-        StringBuilder bufferedMessage = new StringBuilder("{\n");
-
-        if(message.length > 0){
-            for (int[] element : message) {
-                bufferedMessage.append("{");
-
-                for (int j = 0; j < element.length - 1; j++) {
-                    bufferedMessage.append(element[j]).append(", ");
-                }
-
-                bufferedMessage.append(element[element.length - 1]).append("}\n");
-            }
-        }
-        bufferedMessage.append("}");
-
-        printer.printOut(prefixAdder.addPrefix() + bufferedMessage);
+    public void log(IntMatrixLogMessage message) {
+        printer.printOut(message.toString());
     }
 
     public void log(BooleanLogMessage message) {

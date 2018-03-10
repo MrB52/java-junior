@@ -25,7 +25,7 @@ public class Logger {
     }
 
     public static void log(int[][] message) {
-        loggerController.log(message);
+        loggerController.log(new IntMatrixLogMessage(message));
     }
 
     public static void log(boolean message) {
