@@ -39,13 +39,12 @@ public class LoggerController {
     }
 
     public void log(IntLogMessage message) {
-        if (previousLogMessage == null || !message.isTypeMatched(previousLogMessage)) {
-            previousLogMessage = message;
-        } else {
-            previousLogMessage = new IntLogMessage(((IntLogMessage)previousLogMessage).getAccumulatedValue() +
-                                                   message.getAccumulatedValue());
+        checkReadinessForPrintOut(message);
+
+        if (isAccumulatingNeeded(message)) {
+            previousLogMessage = new IntLogMessage(((IntLogMessage) previousLogMessage).getAccumulatedValue() +
+                    message.getAccumulatedValue());
         }
-//        printer.printOut(message);
     }
 
     public void log(IntArrayLogMessage message) {
@@ -65,10 +64,28 @@ public class LoggerController {
     }
 
     public void log(StringLogMessage message) {
-        printer.printOut(message);
+        checkReadinessForPrintOut(message);
+
+        if (isAccumulatingNeeded(message)) {
+            //TODO add body
+        }
     }
 
     public void log(ReferenceLogMessage message) {
         printer.printOut(message);
+    }
+
+    private void checkReadinessForPrintOut(LogMessage message) {
+        if (previousLogMessage != null && !message.isTypeMatched(previousLogMessage)) {
+            printer.printOut(previousLogMessage);
+        }
+    }
+
+    private boolean isAccumulatingNeeded(LogMessage message) {
+        if (previousLogMessage == null || !message.isTypeMatched(previousLogMessage)) {
+            previousLogMessage = message;
+            return false;
+        }
+        return true;
     }
 }

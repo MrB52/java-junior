@@ -23,14 +23,14 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     @Test
     public void shouldLogSequentIntegersAsSum() throws IOException {
         Logger.log("str 1");
-        Logger.flush();
         Logger.log(1);
         Logger.log(2);
-        Logger.flush();
         Logger.log("str 2");
-        Logger.flush();
         Logger.log(0);
         Logger.flush();
+//        Logger.flush();
+//        Logger.flush();
+//        Logger.flush();
 
         assertSysoutContains("str 1");
         assertSysoutContains("3");
