@@ -2,6 +2,7 @@ package com.acme.edu;
 
 import com.acme.edu.message.IntLogMessage;
 import com.acme.edu.message.LogMessage;
+import com.acme.edu.message.ReferenceLogMessage;
 import com.acme.edu.message.StringLogMessage;
 import com.acme.edu.prefix.*;
 import com.acme.edu.printer.Printer;
@@ -106,8 +107,7 @@ public class LoggerController {
 //        printer.printOut(prefixAdder.addPrefix() + MessageState.getStringMessageState());
     }
 
-    public void log(Object message) {
-        prefixAdder = new ReferencePrefixAdder();
-        printer.printOut(prefixAdder.addPrefix() + message);
+    public void log(ReferenceLogMessage message) {
+        printer.printOut(message.toString());
     }
 }
