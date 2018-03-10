@@ -26,12 +26,26 @@ public class LoggerController {
         this.previousLogMessage = previousLogMessage;
     }
 
+    public Printer getPrinter() {
+        return printer;
+    }
+
+    public void setPrinter(Printer printer) {
+        this.printer = printer;
+    }
+
     public void log(ByteLogMessage message) {
         printer.printOut(message);
     }
 
     public void log(IntLogMessage message) {
-        printer.printOut(message);
+        if (previousLogMessage == null || !message.isTypeMatched(previousLogMessage)) {
+            previousLogMessage = message;
+        } else {
+            previousLogMessage = new IntLogMessage(((IntLogMessage)previousLogMessage).getAccumulatedValue() +
+                                                   message.getAccumulatedValue());
+        }
+//        printer.printOut(message);
     }
 
     public void log(IntArrayLogMessage message) {

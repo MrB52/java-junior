@@ -45,6 +45,7 @@ public class Logger {
     }
 
     public static void flush() {
+        loggerController.getPrinter().printOut(loggerController.getPreviousLogMessage());
         loggerController.setPreviousLogMessage(null);
     }
 }
