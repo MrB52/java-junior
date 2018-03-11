@@ -76,8 +76,8 @@ public class LoggerController {
         printer.printOut(message.toString());
     }
 
-    public void log(IntMatrixLogMessage message) {
-        printer.printOut(message.toString());
+    public void log(IntMatrixLogMessage message, FormatterVisitor formatterVisitor) {
+        printer.printOut(formatterVisitor.formatLogMessage(message));
     }
 
     public void log(BooleanLogMessage message, FormatterVisitor formatterVisitor) {

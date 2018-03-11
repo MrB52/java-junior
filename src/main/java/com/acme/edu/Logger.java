@@ -20,7 +20,7 @@ public class Logger {
     }
 
     public static void log(int[][] message) {
-        loggerController.log(new IntMatrixLogMessage(message));
+        loggerController.log(new IntMatrixLogMessage(message), new PrefixFormatterVisitor());
     }
 
     public static void log(boolean message) {

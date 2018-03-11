@@ -20,7 +20,7 @@ public class PrefixFormatterVisitor implements FormatterVisitor {
 
     @Override
     public String formatIntMatrixLogMessage(IntMatrixLogMessage message) {
-        return null;
+        return "primitives matrix: " + message;
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.acme.edu.message;
 
-import com.acme.edu.prefix.PrimitiveMatrixPrefixAdder;
 import com.acme.edu.visitor.FormatterVisitor;
 
 public class IntMatrixLogMessage extends LogMessage {
@@ -17,14 +16,13 @@ public class IntMatrixLogMessage extends LogMessage {
 
     @Override
     public String acceptFormatterVisitor(FormatterVisitor formatterVisitor) {
-        return null;
+        return formatterVisitor.formatIntMatrixLogMessage(this);
     }
 
     @Override
     public String toString() {
         StringBuilder bufferedValue = new StringBuilder("{\n");
 
-        setPrefixAdder(new PrimitiveMatrixPrefixAdder());
         if(value.length > 0){
             for (int[] element : value) {
                 bufferedValue.append("{");
@@ -38,6 +36,6 @@ public class IntMatrixLogMessage extends LogMessage {
         }
         bufferedValue.append("}");
 
-        return getPrefixAdder().addPrefix() + bufferedValue;
+        return bufferedValue.toString();
     }
 }
