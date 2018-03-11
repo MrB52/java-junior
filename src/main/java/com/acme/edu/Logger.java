@@ -16,7 +16,7 @@ public class Logger {
     }
 
     public static void log(int[] message) {
-        loggerController.log(new IntArrayLogMessage(message));
+        loggerController.log(new IntArrayLogMessage(message), new PrefixFormatterVisitor());
     }
 
     public static void log(int[][] message) {

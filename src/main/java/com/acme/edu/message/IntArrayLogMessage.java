@@ -1,6 +1,5 @@
 package com.acme.edu.message;
 
-import com.acme.edu.prefix.PrimitiveArrayPrefixAdder;
 import com.acme.edu.visitor.FormatterVisitor;
 
 public class IntArrayLogMessage extends LogMessage {
@@ -17,14 +16,13 @@ public class IntArrayLogMessage extends LogMessage {
 
     @Override
     public String acceptFormatterVisitor(FormatterVisitor formatterVisitor) {
-        return null;
+        return formatterVisitor.formatIntArrayLogMessage(this);
     }
 
     @Override
     public String toString() {
         StringBuilder bufferedValue = new StringBuilder("{");
 
-        setPrefixAdder(new PrimitiveArrayPrefixAdder());
         if (value.length > 0) {
             for (int i = 0; i < value.length-1; i++) {
                 bufferedValue.append(value[i]).append(", ");
@@ -33,6 +31,6 @@ public class IntArrayLogMessage extends LogMessage {
         }
         bufferedValue.append("}");
 
-        return getPrefixAdder().addPrefix() + bufferedValue;
+        return bufferedValue.toString();
     }
 }

@@ -15,7 +15,7 @@ public class PrefixFormatterVisitor implements FormatterVisitor {
 
     @Override
     public String formatIntArrayLogMessage(IntArrayLogMessage message) {
-        return null;
+        return "primitives array: " + message;
     }
 
     @Override
