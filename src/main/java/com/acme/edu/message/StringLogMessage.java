@@ -26,27 +26,21 @@ public class StringLogMessage extends LogMessage {
 
     @Override
     public String acceptFormatterVisitor(FormatterVisitor formatterVisitor) {
-        return null;
+        return formatterVisitor.formatStringLogMessage(this);
     }
 
     public void increaseStringRepetitionCounter() {
         stringRepetitionCounter++;
     }
 
-    public void resetSttingRepetetionCounter() {
-        stringRepetitionCounter = 0;
-    }
-
     @Override
     public String toString() {
-        setPrefixAdder(new StringPrefixAdder());
 
         if (stringRepetitionCounter > 1) {
-            return new StringBuilder(getPrefixAdder().addPrefix()).append(value)
-                                                                  .append(" (x")
-                                                                  .append(stringRepetitionCounter)
-                                                                  .append(")").toString();
+            return new StringBuilder(value).append(" (x")
+                                           .append(stringRepetitionCounter)
+                                           .append(")").toString();
         }
-        return getPrefixAdder().addPrefix() + value;
+        return value;
     }
 }

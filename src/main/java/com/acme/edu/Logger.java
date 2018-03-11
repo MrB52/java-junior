@@ -2,17 +2,18 @@ package com.acme.edu;
 
 import com.acme.edu.message.*;
 import com.acme.edu.printer.ConsolePrinter;
+import com.acme.edu.visitor.FormatterVisitor;
 import com.acme.edu.visitor.PrefixFormatterVisitor;
 
 public class Logger {
     private static LoggerController loggerController = new LoggerController(new ConsolePrinter());
 
     public static void log(byte message) {
-        loggerController.log(new ByteLogMessage(message));
+        loggerController.log(new ByteLogMessage(message), new PrefixFormatterVisitor());
     }
 
     public static void log(int message) {
-        loggerController.log(new IntLogMessage(message));
+        loggerController.log(new IntLogMessage(message), new PrefixFormatterVisitor());
     }
 
     public static void log(int[] message) {
@@ -32,7 +33,7 @@ public class Logger {
     }
 
     public static void log(String message) {
-        loggerController.log(new StringLogMessage(message));
+        loggerController.log(new StringLogMessage(message), new PrefixFormatterVisitor());
     }
 
     public static void log(Object message) {
@@ -40,7 +41,9 @@ public class Logger {
     }
 
     public static void flush() {
-        loggerController.getPrinter().printOut(loggerController.getPreviousLogMessage().toString());
+        FormatterVisitor formatterVisitor = new PrefixFormatterVisitor();
+
+        loggerController.getPrinter().printOut(formatterVisitor.formatLogMessage(loggerController.getPreviousLogMessage()));
         loggerController.setPreviousLogMessage(null);
     }
 }

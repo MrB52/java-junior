@@ -28,18 +28,18 @@ public class LoggerController {
         this.printer = printer;
     }
 
-    public void log(ByteLogMessage message) {
-        checkReadinessForPrintOut(message);
+    public void log(ByteLogMessage message, FormatterVisitor formatterVisitor) {
+        checkReadinessForPrintOut(message, formatterVisitor);
 
         if (checkAccumulatingNecessity(message)) {
 
-            if (checkNumberUpperBorderOverflow(message, Byte.MAX_VALUE)) {
+            if (checkNumberUpperBorderOverflow(message, Byte.MAX_VALUE, formatterVisitor)) {
                 previousLogMessage = new ByteLogMessage(((ByteLogMessage)previousLogMessage).getValue() +
                                                         message.getValue() - Byte.MAX_VALUE);
                 return;
             }
 
-            if (checkNumberLowerBorderOverflow(message, Byte.MIN_VALUE)) {
+            if (checkNumberLowerBorderOverflow(message, Byte.MIN_VALUE, formatterVisitor)) {
                 previousLogMessage = new ByteLogMessage(((ByteLogMessage)previousLogMessage).getValue() +
                                                         message.getValue() - Byte.MIN_VALUE);
                 return;
@@ -50,18 +50,18 @@ public class LoggerController {
         }
     }
 
-    public void log(IntLogMessage message) {
-        checkReadinessForPrintOut(message);
+    public void log(IntLogMessage message, FormatterVisitor formatterVisitor) {
+        checkReadinessForPrintOut(message, formatterVisitor);
 
         if (checkAccumulatingNecessity(message)) {
 
-            if (checkNumberUpperBorderOverflow(message, Integer.MAX_VALUE)) {
+            if (checkNumberUpperBorderOverflow(message, Integer.MAX_VALUE, formatterVisitor)) {
                 previousLogMessage = new IntLogMessage(((IntLogMessage)previousLogMessage).getValue() +
                                                        message.getValue() - Integer.MAX_VALUE);
                 return;
             }
 
-            if (checkNumberLowerBorderOverflow(message, Integer.MIN_VALUE)) {
+            if (checkNumberLowerBorderOverflow(message, Integer.MIN_VALUE, formatterVisitor)) {
                 previousLogMessage = new IntLogMessage(((IntLogMessage)previousLogMessage).getValue() +
                                                        message.getValue() - Integer.MIN_VALUE);
                 return;
@@ -88,12 +88,12 @@ public class LoggerController {
         printer.printOut(formatterVisitor.formatLogMessage(message));
     }
 
-    public void log(StringLogMessage message) {
-        checkReadinessForPrintOut(message);
+    public void log(StringLogMessage message, FormatterVisitor formatterVisitor) {
+        checkReadinessForPrintOut(message, formatterVisitor);
 
         if (checkAccumulatingNecessity(message)) {
 
-            if (message.getValue().equals(((StringLogMessage) previousLogMessage).getValue())) {
+            if (message.getValue().equals(((StringLogMessage)previousLogMessage).getValue())) {
                 ((StringLogMessage) previousLogMessage).increaseStringRepetitionCounter();
             } else {
                 printer.printOut(previousLogMessage.toString());
@@ -106,9 +106,9 @@ public class LoggerController {
         printer.printOut(formatterVisitor.formatLogMessage(message));
     }
 
-    private void checkReadinessForPrintOut(LogMessage message) {
+    private void checkReadinessForPrintOut(LogMessage message, FormatterVisitor formatterVisitor) {
         if (previousLogMessage != null && !message.isTypeMatched(previousLogMessage)) {
-            printer.printOut(previousLogMessage.toString());
+            printer.printOut(formatterVisitor.formatLogMessage(previousLogMessage));
         }
     }
 
@@ -120,20 +120,20 @@ public class LoggerController {
         return true;
     }
 
-    private boolean checkNumberUpperBorderOverflow(NumberLogMessage numberLogMessage, long maxValue) {
+    private boolean checkNumberUpperBorderOverflow(NumberLogMessage numberLogMessage, long maxValue, FormatterVisitor formatterVisitor) {
         if (numberLogMessage.getValue() + ((NumberLogMessage)previousLogMessage).getValue() >= maxValue) {
             numberLogMessage.setUpperOverflowStatus(true);
-            printer.printOut(numberLogMessage.toString());
+            printer.printOut(formatterVisitor.formatLogMessage(numberLogMessage));
             return true;
         }
 
         return false;
     }
 
-    private boolean checkNumberLowerBorderOverflow(NumberLogMessage numberLogMessage, long minValue) {
+    private boolean checkNumberLowerBorderOverflow(NumberLogMessage numberLogMessage, long minValue, FormatterVisitor formatterVisitor) {
         if (numberLogMessage.getValue() + ((NumberLogMessage)previousLogMessage).getValue() <= minValue) {
             numberLogMessage.setLowerOverflowStatus(true);
-            printer.printOut(numberLogMessage.toString());
+            printer.printOut(formatterVisitor.formatLogMessage(numberLogMessage));
             return true;
         }
 

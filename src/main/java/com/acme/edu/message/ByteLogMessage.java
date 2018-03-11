@@ -1,6 +1,5 @@
 package com.acme.edu.message;
 
-import com.acme.edu.prefix.PrimitivePrefixAdder;
 import com.acme.edu.visitor.FormatterVisitor;
 
 public class ByteLogMessage extends NumberLogMessage {
@@ -17,21 +16,20 @@ public class ByteLogMessage extends NumberLogMessage {
 
     @Override
     public String acceptFormatterVisitor(FormatterVisitor formatterVisitor) {
-        return null;
+        return formatterVisitor.formatByteLogMessage(this);
     }
 
     @Override
     public String toString() {
-        setPrefixAdder(new PrimitivePrefixAdder());
 
         if (isUpperOverflowStatus()) {
-            return getPrefixAdder().addPrefix() + Byte.MAX_VALUE;
+            return Long.toString(Byte.MAX_VALUE);
         }
 
         if (isLowerOverflowStatus()) {
-            return getPrefixAdder().addPrefix() + Byte.MIN_VALUE;
+            return Long.toString(Byte.MIN_VALUE);
         }
 
-        return getPrefixAdder().addPrefix() + getValue();
+        return Long.toString(getValue());
     }
 }

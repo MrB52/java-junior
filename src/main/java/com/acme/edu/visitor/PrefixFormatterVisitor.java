@@ -5,12 +5,12 @@ import com.acme.edu.message.*;
 public class PrefixFormatterVisitor implements FormatterVisitor {
     @Override
     public String formatByteLogMessage(ByteLogMessage message) {
-        return null;
+        return "primitive: " + message;
     }
 
     @Override
     public String formatIntLogMessage(IntLogMessage message) {
-        return null;
+        return "primitive: " + message;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class PrefixFormatterVisitor implements FormatterVisitor {
 
     @Override
     public String formatStringLogMessage(StringLogMessage message) {
-        return null;
+        return "string: " + message;
     }
 
     @Override
