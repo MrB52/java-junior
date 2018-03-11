@@ -1,12 +1,11 @@
 package com.acme.edu;
 
 import com.acme.edu.message.*;
-import com.acme.edu.printer.ConsolePrinter;
 import com.acme.edu.visitor.FormatterVisitor;
 import com.acme.edu.visitor.PrefixFormatterVisitor;
 
 public class Logger {
-    private static LoggerController loggerController = new LoggerController(new ConsolePrinter());
+    private static LoggerController loggerController = new LoggerController(System.out::println);
 
     public static void log(byte message) {
         loggerController.log(new ByteLogMessage(message), new PrefixFormatterVisitor());
