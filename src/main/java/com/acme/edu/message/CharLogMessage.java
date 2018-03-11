@@ -1,6 +1,5 @@
 package com.acme.edu.message;
 
-import com.acme.edu.prefix.CharPrefixAdder;
 import com.acme.edu.visitor.FormatterVisitor;
 
 public class CharLogMessage extends LogMessage {
@@ -23,10 +22,4 @@ public class CharLogMessage extends LogMessage {
     public String acceptFormatterVisitor(FormatterVisitor formatterVisitor) {
         return formatterVisitor.formatCharLogMessage(this);
     }
-
-//    @Override
-//    public String toString() {
-//        setPrefixAdder(new CharPrefixAdder());
-//        return getPrefixAdder().addPrefix() + value;
-//    }
 }
