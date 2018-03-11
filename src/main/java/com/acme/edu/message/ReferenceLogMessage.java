@@ -1,6 +1,5 @@
 package com.acme.edu.message;
 
-import com.acme.edu.prefix.ReferencePrefixAdder;
 import com.acme.edu.visitor.FormatterVisitor;
 
 public class ReferenceLogMessage extends LogMessage {
@@ -23,10 +22,4 @@ public class ReferenceLogMessage extends LogMessage {
     public String acceptFormatterVisitor(FormatterVisitor formatterVisitor) {
         return formatterVisitor.formatReferenceLogMessage(this);
     }
-
-    //    @Override
-//    public String toString() {
-//        setPrefixAdder(new ReferencePrefixAdder());
-//        return getPrefixAdder().addPrefix() + value.toString();
-//    }
 }

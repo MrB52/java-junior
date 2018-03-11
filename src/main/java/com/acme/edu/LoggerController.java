@@ -84,8 +84,8 @@ public class LoggerController {
         printer.printOut(message.toString());
     }
 
-    public void log(CharLogMessage message) {
-        printer.printOut(message.toString());
+    public void log(CharLogMessage message, FormatterVisitor formatterVisitor) {
+        printer.printOut(formatterVisitor.formatLogMessage(message));
     }
 
     public void log(StringLogMessage message) {

@@ -12,7 +12,7 @@ public class Logger {
     }
 
     public static void log(int message) {
-        loggerController.log(new IntLogMessage(message)); //TODO сдеалть возможность добавлять префикс через конструктор
+        loggerController.log(new IntLogMessage(message));
     }
 
     public static void log(int[] message) {
@@ -28,7 +28,7 @@ public class Logger {
     }
 
     public static void log(char message) {
-        loggerController.log(new CharLogMessage(message));
+        loggerController.log(new CharLogMessage(message), new PrefixFormatterVisitor());
     }
 
     public static void log(String message) {

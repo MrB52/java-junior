@@ -1,7 +1,6 @@
 package com.acme.edu.visitor;
 
 import com.acme.edu.message.*;
-import com.acme.edu.prefix.PrefixAdder;
 
 public class PrefixFormatterVisitor implements FormatterVisitor {
     @Override
@@ -31,7 +30,7 @@ public class PrefixFormatterVisitor implements FormatterVisitor {
 
     @Override
     public String formatCharLogMessage(CharLogMessage message) {
-        return null;
+        return "char: " + message.getValue();
     }
 
     @Override
