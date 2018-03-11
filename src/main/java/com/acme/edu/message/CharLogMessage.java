@@ -1,6 +1,7 @@
 package com.acme.edu.message;
 
 import com.acme.edu.prefix.CharPrefixAdder;
+import com.acme.edu.visitor.FormatterVisitor;
 
 public class CharLogMessage extends LogMessage {
     private char value;
@@ -12,6 +13,11 @@ public class CharLogMessage extends LogMessage {
     @Override
     public boolean isTypeMatched(LogMessage logMessage) {
         return logMessage instanceof CharLogMessage;
+    }
+
+    @Override
+    public String acceptFormatterVisitor(FormatterVisitor formatterVisitor) {
+        return null;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.acme.edu.visitor;
 
 import com.acme.edu.message.*;
+import com.acme.edu.prefix.PrefixAdder;
 
 public interface FormatterVisitor {
     String formatByteLogMessage(ByteLogMessage message);
@@ -18,4 +19,8 @@ public interface FormatterVisitor {
     String formatStringLogMessage(StringLogMessage message);
 
     String formatReferenceLogMessage(ReferenceLogMessage message);
+
+    default String formatLogMessage(LogMessage message) {
+        return message.acceptFormatterVisitor(this);
+    }
 }

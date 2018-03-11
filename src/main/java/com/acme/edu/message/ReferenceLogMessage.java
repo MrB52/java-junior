@@ -1,6 +1,7 @@
 package com.acme.edu.message;
 
 import com.acme.edu.prefix.ReferencePrefixAdder;
+import com.acme.edu.visitor.FormatterVisitor;
 
 public class ReferenceLogMessage extends LogMessage {
     private Object value;
@@ -9,14 +10,23 @@ public class ReferenceLogMessage extends LogMessage {
         this.value = value;
     }
 
+    public Object getValue() {
+        return value;
+    }
+
     @Override
     public boolean isTypeMatched(LogMessage logMessage) {
         return logMessage instanceof ReferenceLogMessage;
     }
 
     @Override
-    public String toString() {
-        setPrefixAdder(new ReferencePrefixAdder());
-        return getPrefixAdder().addPrefix() + value.toString();
+    public String acceptFormatterVisitor(FormatterVisitor formatterVisitor) {
+        return formatterVisitor.formatReferenceLogMessage(this);
     }
+
+    //    @Override
+//    public String toString() {
+//        setPrefixAdder(new ReferencePrefixAdder());
+//        return getPrefixAdder().addPrefix() + value.toString();
+//    }
 }

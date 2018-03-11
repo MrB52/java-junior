@@ -1,6 +1,7 @@
 package com.acme.edu.message;
 
 import com.acme.edu.prefix.StringPrefixAdder;
+import com.acme.edu.visitor.FormatterVisitor;
 
 public class StringLogMessage extends LogMessage {
     private String value;
@@ -21,6 +22,11 @@ public class StringLogMessage extends LogMessage {
     @Override
     public boolean isTypeMatched(LogMessage logMessage) {
         return logMessage instanceof StringLogMessage;
+    }
+
+    @Override
+    public String acceptFormatterVisitor(FormatterVisitor formatterVisitor) {
+        return null;
     }
 
     public void increaseStringRepetitionCounter() {

@@ -1,6 +1,7 @@
 package com.acme.edu.message;
 
 import com.acme.edu.prefix.PrimitivePrefixAdder;
+import com.acme.edu.visitor.FormatterVisitor;
 
 public class IntLogMessage extends NumberLogMessage {
 
@@ -12,6 +13,11 @@ public class IntLogMessage extends NumberLogMessage {
     public boolean isTypeMatched(LogMessage logMessage) {
         return logMessage instanceof IntLogMessage;
 
+    }
+
+    @Override
+    public String acceptFormatterVisitor(FormatterVisitor formatterVisitor) {
+        return null;
     }
 
     @Override

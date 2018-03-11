@@ -1,6 +1,7 @@
 package com.acme.edu.message;
 
 import com.acme.edu.prefix.PrimitiveArrayPrefixAdder;
+import com.acme.edu.visitor.FormatterVisitor;
 
 public class IntArrayLogMessage extends LogMessage {
     private int[] value;
@@ -12,6 +13,11 @@ public class IntArrayLogMessage extends LogMessage {
     @Override
     public boolean isTypeMatched(LogMessage logMessage) {
         return logMessage instanceof IntArrayLogMessage;
+    }
+
+    @Override
+    public String acceptFormatterVisitor(FormatterVisitor formatterVisitor) {
+        return null;
     }
 
     @Override

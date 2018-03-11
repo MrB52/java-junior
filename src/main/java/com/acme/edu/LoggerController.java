@@ -2,6 +2,7 @@ package com.acme.edu;
 
 import com.acme.edu.message.*;
 import com.acme.edu.printer.Printer;
+import com.acme.edu.visitor.FormatterVisitor;
 
 public class LoggerController {
     private LogMessage previousLogMessage;
@@ -72,19 +73,19 @@ public class LoggerController {
     }
 
     public void log(IntArrayLogMessage message) {
-        printer.printOut(message);
+        printer.printOut(message.toString());
     }
 
     public void log(IntMatrixLogMessage message) {
-        printer.printOut(message);
+        printer.printOut(message.toString());
     }
 
     public void log(BooleanLogMessage message) {
-        printer.printOut(message);
+        printer.printOut(message.toString());
     }
 
     public void log(CharLogMessage message) {
-        printer.printOut(message);
+        printer.printOut(message.toString());
     }
 
     public void log(StringLogMessage message) {
@@ -95,19 +96,19 @@ public class LoggerController {
             if (message.getValue().equals(((StringLogMessage) previousLogMessage).getValue())) {
                 ((StringLogMessage) previousLogMessage).increaseStringRepetitionCounter();
             } else {
-                printer.printOut(previousLogMessage);
+                printer.printOut(previousLogMessage.toString());
                 previousLogMessage = message;
             }
         }
     }
 
-    public void log(ReferenceLogMessage message) {
-        printer.printOut(message);
+    public void log(ReferenceLogMessage message, FormatterVisitor formatterVisitor) {
+        printer.printOut(formatterVisitor.formatLogMessage(message));
     }
 
     private void checkReadinessForPrintOut(LogMessage message) {
         if (previousLogMessage != null && !message.isTypeMatched(previousLogMessage)) {
-            printer.printOut(previousLogMessage);
+            printer.printOut(previousLogMessage.toString());
         }
     }
 
@@ -122,7 +123,7 @@ public class LoggerController {
     private boolean checkNumberUpperBorderOverflow(NumberLogMessage numberLogMessage, long maxValue) {
         if (numberLogMessage.getValue() + ((NumberLogMessage)previousLogMessage).getValue() >= maxValue) {
             numberLogMessage.setUpperOverflowStatus(true);
-            printer.printOut(numberLogMessage);
+            printer.printOut(numberLogMessage.toString());
             return true;
         }
 
@@ -132,7 +133,7 @@ public class LoggerController {
     private boolean checkNumberLowerBorderOverflow(NumberLogMessage numberLogMessage, long minValue) {
         if (numberLogMessage.getValue() + ((NumberLogMessage)previousLogMessage).getValue() <= minValue) {
             numberLogMessage.setLowerOverflowStatus(true);
-            printer.printOut(numberLogMessage);
+            printer.printOut(numberLogMessage.toString());
             return true;
         }
 

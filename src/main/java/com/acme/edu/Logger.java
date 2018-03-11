@@ -2,6 +2,7 @@ package com.acme.edu;
 
 import com.acme.edu.message.*;
 import com.acme.edu.printer.ConsolePrinter;
+import com.acme.edu.visitor.PrefixFormatterVisitor;
 
 public class Logger {
     private static LoggerController loggerController = new LoggerController(new ConsolePrinter());
@@ -35,11 +36,11 @@ public class Logger {
     }
 
     public static void log(Object message) {
-        loggerController.log(new ReferenceLogMessage(message));
+        loggerController.log(new ReferenceLogMessage(message), new PrefixFormatterVisitor());
     }
 
     public static void flush() {
-        loggerController.getPrinter().printOut(loggerController.getPreviousLogMessage());
+        loggerController.getPrinter().printOut(loggerController.getPreviousLogMessage().toString());
         loggerController.setPreviousLogMessage(null);
     }
 }

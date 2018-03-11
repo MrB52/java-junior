@@ -1,6 +1,7 @@
 package com.acme.edu.message;
 
 import com.acme.edu.prefix.PrimitivePrefixAdder;
+import com.acme.edu.visitor.FormatterVisitor;
 
 public class BooleanLogMessage extends LogMessage {
     private boolean value;
@@ -12,6 +13,11 @@ public class BooleanLogMessage extends LogMessage {
     @Override
     public boolean isTypeMatched(LogMessage logMessage) {
         return logMessage instanceof BooleanLogMessage;
+    }
+
+    @Override
+    public String acceptFormatterVisitor(FormatterVisitor formatterVisitor) {
+        return null;
     }
 
     @Override

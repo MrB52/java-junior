@@ -1,6 +1,7 @@
 package com.acme.edu.message;
 
 import com.acme.edu.prefix.PrimitiveMatrixPrefixAdder;
+import com.acme.edu.visitor.FormatterVisitor;
 
 public class IntMatrixLogMessage extends LogMessage {
     private int[][] value;
@@ -12,6 +13,11 @@ public class IntMatrixLogMessage extends LogMessage {
     @Override
     public boolean isTypeMatched(LogMessage logMessage) {
         return logMessage instanceof IntMatrixLogMessage;
+    }
+
+    @Override
+    public String acceptFormatterVisitor(FormatterVisitor formatterVisitor) {
+        return null;
     }
 
     @Override
