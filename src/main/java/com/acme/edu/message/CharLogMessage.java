@@ -9,10 +9,6 @@ public class CharLogMessage extends LogMessage {
         this.value = value;
     }
 
-    public char getValue() {
-        return value;
-    }
-
     @Override
     public boolean isTypeMatched(LogMessage logMessage) {
         return logMessage instanceof CharLogMessage;
@@ -21,5 +17,10 @@ public class CharLogMessage extends LogMessage {
     @Override
     public String acceptFormatterVisitor(FormatterVisitor formatterVisitor) {
         return formatterVisitor.formatCharLogMessage(this);
+    }
+
+    @Override
+    public String toString() {
+        return Character.toString(value);
     }
 }

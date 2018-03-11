@@ -9,10 +9,6 @@ public class BooleanLogMessage extends LogMessage {
         this.value = value;
     }
 
-    public boolean getValue() {
-        return value;
-    }
-
     @Override
     public boolean isTypeMatched(LogMessage logMessage) {
         return logMessage instanceof BooleanLogMessage;
@@ -21,5 +17,10 @@ public class BooleanLogMessage extends LogMessage {
     @Override
     public String acceptFormatterVisitor(FormatterVisitor formatterVisitor) {
         return formatterVisitor.formatBooleanLogMessage(this);
+    }
+
+    @Override
+    public String toString() {
+        return Boolean.toString(value);
     }
 }

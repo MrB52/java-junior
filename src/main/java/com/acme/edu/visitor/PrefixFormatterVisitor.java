@@ -25,12 +25,12 @@ public class PrefixFormatterVisitor implements FormatterVisitor {
 
     @Override
     public String formatBooleanLogMessage(BooleanLogMessage message) {
-        return "primitive: " + message.getValue();
+        return "primitive: " + message;
     }
 
     @Override
     public String formatCharLogMessage(CharLogMessage message) {
-        return "char: " + message.getValue();
+        return "char: " + message;
     }
 
     @Override
@@ -40,6 +40,6 @@ public class PrefixFormatterVisitor implements FormatterVisitor {
 
     @Override
     public String formatReferenceLogMessage(ReferenceLogMessage message) {
-        return "reference: " + message.getValue();
+        return "reference: " + message;
     }
 }

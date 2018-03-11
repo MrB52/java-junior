@@ -9,10 +9,6 @@ public class ReferenceLogMessage extends LogMessage {
         this.value = value;
     }
 
-    public Object getValue() {
-        return value;
-    }
-
     @Override
     public boolean isTypeMatched(LogMessage logMessage) {
         return logMessage instanceof ReferenceLogMessage;
@@ -21,5 +17,10 @@ public class ReferenceLogMessage extends LogMessage {
     @Override
     public String acceptFormatterVisitor(FormatterVisitor formatterVisitor) {
         return formatterVisitor.formatReferenceLogMessage(this);
+    }
+
+    @Override
+    public String toString() {
+        return value.toString();
     }
 }
