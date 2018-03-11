@@ -80,8 +80,8 @@ public class LoggerController {
         printer.printOut(message.toString());
     }
 
-    public void log(BooleanLogMessage message) {
-        printer.printOut(message.toString());
+    public void log(BooleanLogMessage message, FormatterVisitor formatterVisitor) {
+        printer.printOut(formatterVisitor.formatLogMessage(message));
     }
 
     public void log(CharLogMessage message, FormatterVisitor formatterVisitor) {

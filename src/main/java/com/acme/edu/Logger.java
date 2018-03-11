@@ -24,7 +24,7 @@ public class Logger {
     }
 
     public static void log(boolean message) {
-        loggerController.log(new BooleanLogMessage(message));
+        loggerController.log(new BooleanLogMessage(message), new PrefixFormatterVisitor());
     }
 
     public static void log(char message) {

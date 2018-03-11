@@ -25,7 +25,7 @@ public class PrefixFormatterVisitor implements FormatterVisitor {
 
     @Override
     public String formatBooleanLogMessage(BooleanLogMessage message) {
-        return null;
+        return "primitive: " + message.getValue();
     }
 
     @Override
