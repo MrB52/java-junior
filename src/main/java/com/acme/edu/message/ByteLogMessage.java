@@ -3,20 +3,20 @@ package com.acme.edu.message;
 import com.acme.edu.prefix.PrimitivePrefixAdder;
 
 public class ByteLogMessage extends LogMessage {
-    private int accumulatedValue;
+    private long value;
 
-    public ByteLogMessage(int accumulatedValue) {
-        if(accumulatedValue >= Byte.MAX_VALUE) {
-            this.accumulatedValue = Byte.MAX_VALUE;
-        } else if (accumulatedValue <= Byte.MIN_VALUE) {
-            this.accumulatedValue = Byte.MIN_VALUE;
+    public ByteLogMessage(long value) {
+        if(value >= Byte.MAX_VALUE) {
+            this.value = Byte.MAX_VALUE;
+        } else if (value <= Byte.MIN_VALUE) {
+            this.value = Byte.MIN_VALUE;
         } else {
-            this.accumulatedValue = accumulatedValue;
+            this.value = value;
         }
     }
 
-    public int getAccumulatedValue() {
-        return accumulatedValue;
+    public long getValue() {
+        return value;
     }
 
     @Override
@@ -28,6 +28,6 @@ public class ByteLogMessage extends LogMessage {
     @Override
     public String toString() {
         setPrefixAdder(new PrimitivePrefixAdder());
-        return getPrefixAdder().addPrefix() + accumulatedValue;
+        return getPrefixAdder().addPrefix() + value;
     }
 }

@@ -3,11 +3,11 @@ package com.acme.edu.message;
 import com.acme.edu.prefix.StringPrefixAdder;
 
 public class StringLogMessage extends LogMessage {
-    private String accumulatedValue;
+    private String value;
 
     //TODO добавить логику аккумулирования
-    public StringLogMessage(String accumulatedValue) {
-        this.accumulatedValue = accumulatedValue;
+    public StringLogMessage(String value) {
+        this.value = value;
     }
 
     @Override
@@ -18,6 +18,6 @@ public class StringLogMessage extends LogMessage {
     @Override
     public String toString() {
         setPrefixAdder(new StringPrefixAdder());
-        return getPrefixAdder().addPrefix() + accumulatedValue;
+        return getPrefixAdder().addPrefix() + value;
     }
 }
