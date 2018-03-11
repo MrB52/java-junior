@@ -3,11 +3,6 @@ package com.acme.edu;
 import com.acme.edu.message.*;
 import com.acme.edu.printer.Printer;
 
-/**
- * <code>LoggerController</code> - класс для логирования сообщений в консоль. Содержит один перегруженный метод log() для
- * логирования сообщений соответствующего типа.
- */
-
 public class LoggerController {
     private LogMessage previousLogMessage;
     private Printer printer;
@@ -36,8 +31,21 @@ public class LoggerController {
         checkReadinessForPrintOut(message);
 
         if (checkAccumulatingNecessity(message)) {
+
+            if (checkNumberUpperBorderOverflow(message, Byte.MAX_VALUE)) {
+                previousLogMessage = new ByteLogMessage(((ByteLogMessage)previousLogMessage).getValue() +
+                                                        message.getValue() - Byte.MAX_VALUE);
+                return;
+            }
+
+            if (checkNumberLowerBorderOverflow(message, Byte.MIN_VALUE)) {
+                previousLogMessage = new ByteLogMessage(((ByteLogMessage)previousLogMessage).getValue() +
+                                                        message.getValue() - Byte.MIN_VALUE);
+                return;
+            }
+
             previousLogMessage = new ByteLogMessage(((ByteLogMessage)previousLogMessage).getValue() +
-                    message.getValue());
+                                                    message.getValue());
         }
     }
 
@@ -45,6 +53,7 @@ public class LoggerController {
         checkReadinessForPrintOut(message);
 
         if (checkAccumulatingNecessity(message)) {
+
             if (checkNumberUpperBorderOverflow(message, Integer.MAX_VALUE)) {
                 previousLogMessage = new IntLogMessage(((IntLogMessage)previousLogMessage).getValue() +
                                                        message.getValue() - Integer.MAX_VALUE);
@@ -53,12 +62,12 @@ public class LoggerController {
 
             if (checkNumberLowerBorderOverflow(message, Integer.MIN_VALUE)) {
                 previousLogMessage = new IntLogMessage(((IntLogMessage)previousLogMessage).getValue() +
-                        message.getValue() - Integer.MIN_VALUE);
+                                                       message.getValue() - Integer.MIN_VALUE);
                 return;
             }
 
             previousLogMessage = new IntLogMessage(((IntLogMessage)previousLogMessage).getValue() +
-                    message.getValue());
+                                                   message.getValue());
         }
     }
 
@@ -82,7 +91,13 @@ public class LoggerController {
         checkReadinessForPrintOut(message);
 
         if (checkAccumulatingNecessity(message)) {
-            //TODO add body
+
+            if (message.getValue().equals(((StringLogMessage) previousLogMessage).getValue())) {
+                ((StringLogMessage) previousLogMessage).increaseStringRepetitionCounter();
+            } else {
+                printer.printOut(previousLogMessage);
+                previousLogMessage = message;
+            }
         }
     }
 

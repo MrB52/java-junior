@@ -2,21 +2,10 @@ package com.acme.edu.message;
 
 import com.acme.edu.prefix.PrimitivePrefixAdder;
 
-public class ByteLogMessage extends LogMessage {
-    private long value;
+public class ByteLogMessage extends NumberLogMessage {
 
     public ByteLogMessage(long value) {
-        if(value >= Byte.MAX_VALUE) {
-            this.value = Byte.MAX_VALUE;
-        } else if (value <= Byte.MIN_VALUE) {
-            this.value = Byte.MIN_VALUE;
-        } else {
-            this.value = value;
-        }
-    }
-
-    public long getValue() {
-        return value;
+        setValue(value);
     }
 
     @Override
@@ -28,6 +17,15 @@ public class ByteLogMessage extends LogMessage {
     @Override
     public String toString() {
         setPrefixAdder(new PrimitivePrefixAdder());
-        return getPrefixAdder().addPrefix() + value;
+
+        if (isUpperOverflowStatus()) {
+            return getPrefixAdder().addPrefix() + Byte.MAX_VALUE;
+        }
+
+        if (isLowerOverflowStatus()) {
+            return getPrefixAdder().addPrefix() + Byte.MIN_VALUE;
+        }
+
+        return getPrefixAdder().addPrefix() + getValue();
     }
 }

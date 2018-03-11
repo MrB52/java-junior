@@ -77,6 +77,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         Logger.log("str 3");
         Logger.log("str 3");
         Logger.log("str 3");
+        Logger.flush();
 
         assertSysoutContains("str 1");
         assertSysoutContains("str 2 (x2)");

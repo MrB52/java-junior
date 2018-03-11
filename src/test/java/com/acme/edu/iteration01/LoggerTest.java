@@ -38,8 +38,11 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     @Test
     public void shouldLogByte() throws IOException {
         Logger.log((byte)1);
+        Logger.flush();
         Logger.log((byte)0);
+        Logger.flush();
         Logger.log((byte)-1);
+        Logger.flush();
 
         assertSysoutContains("primitive: ");
         assertSysoutContains("1");
@@ -60,7 +63,9 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     @Test
     public void shouldLogString() throws IOException {
         Logger.log("test string 1");
+        Logger.flush();
         Logger.log("other str");
+        Logger.flush();
 
         assertSysoutContains("string: ");
         assertSysoutContains("test string 1");

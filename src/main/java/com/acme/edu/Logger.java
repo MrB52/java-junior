@@ -3,12 +3,6 @@ package com.acme.edu;
 import com.acme.edu.message.*;
 import com.acme.edu.printer.ConsolePrinter;
 
-/**
- * <code>Logger</code> - класс, предоставлющий внешний API для взаимодействия с приложением.
- *
- * <p>Содержит один перегруженный метод log(), предназначенный для логгирования сообщений</p>
- */
-
 public class Logger {
     private static LoggerController loggerController = new LoggerController(new ConsolePrinter());
 
