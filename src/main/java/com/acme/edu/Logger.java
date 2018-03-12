@@ -1,6 +1,7 @@
 package com.acme.edu;
 
 import com.acme.edu.message.*;
+import com.acme.edu.prefix.*;
 import com.acme.edu.visitor.FormatterVisitor;
 import com.acme.edu.visitor.PrefixFormatterVisitor;
 
@@ -8,35 +9,35 @@ public class Logger {
     private static LoggerController loggerController = new LoggerController(System.out::println);
 
     public static void log(byte message) {
-        loggerController.log(new ByteLogMessage(message), new PrefixFormatterVisitor());
+        loggerController.log(new ByteLogMessage(message), new PrefixFormatterVisitor(new PrimitivePrefixAdder()));
     }
 
     public static void log(int message) {
-        loggerController.log(new IntLogMessage(message), new PrefixFormatterVisitor());
+        loggerController.log(new IntLogMessage(message), new PrefixFormatterVisitor(new PrimitivePrefixAdder()));
     }
 
     public static void log(int[] message) {
-        loggerController.log(new IntArrayLogMessage(message), new PrefixFormatterVisitor());
+        loggerController.log(new IntArrayLogMessage(message), new PrefixFormatterVisitor(new PrimitiveArrayPrefixAdder()));
     }
 
     public static void log(int[][] message) {
-        loggerController.log(new IntMatrixLogMessage(message), new PrefixFormatterVisitor());
+        loggerController.log(new IntMatrixLogMessage(message), new PrefixFormatterVisitor(new PrimitiveMatrixPrefixAdder()));
     }
 
     public static void log(boolean message) {
-        loggerController.log(new BooleanLogMessage(message), new PrefixFormatterVisitor());
+        loggerController.log(new BooleanLogMessage(message), new PrefixFormatterVisitor(new PrimitivePrefixAdder()));
     }
 
     public static void log(char message) {
-        loggerController.log(new CharLogMessage(message), new PrefixFormatterVisitor());
+        loggerController.log(new CharLogMessage(message), new PrefixFormatterVisitor(new CharPrefixAdder()));
     }
 
     public static void log(String message) {
-        loggerController.log(new StringLogMessage(message), new PrefixFormatterVisitor());
+        loggerController.log(new StringLogMessage(message), new PrefixFormatterVisitor(new StringPrefixAdder()));
     }
 
     public static void log(Object message) {
-        loggerController.log(new ReferenceLogMessage(message), new PrefixFormatterVisitor());
+        loggerController.log(new ReferenceLogMessage(message), new PrefixFormatterVisitor(new ReferencePrefixAdder()));
     }
 
     public static void flush() {
