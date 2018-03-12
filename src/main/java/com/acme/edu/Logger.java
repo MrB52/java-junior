@@ -39,6 +39,7 @@ public class Logger {
         loggerController.log(new ReferenceLogMessage(message), new PrefixFormatterVisitor());
     }
 
+    //TODO внести в LoggerController
     public static void flush() {
         FormatterVisitor formatterVisitor = new PrefixFormatterVisitor();
 
