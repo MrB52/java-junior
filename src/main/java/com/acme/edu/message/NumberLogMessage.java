@@ -1,6 +1,6 @@
 package com.acme.edu.message;
 
-public abstract class NumberLogMessage extends LogMessage {
+public abstract class NumberLogMessage implements LogMessage {
     private long value;
     private boolean upperOverflowStatus;
     private boolean lowerOverflowStatus;

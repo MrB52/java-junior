@@ -2,7 +2,7 @@ package com.acme.edu.message;
 
 import com.acme.edu.visitor.FormatterVisitor;
 
-public class BooleanLogMessage extends LogMessage {
+public class BooleanLogMessage implements LogMessage {
     private boolean value;
 
     public BooleanLogMessage(boolean value) {

@@ -2,7 +2,7 @@ package com.acme.edu.message;
 
 import com.acme.edu.visitor.FormatterVisitor;
 
-public class IntArrayLogMessage extends LogMessage {
+public class IntArrayLogMessage implements LogMessage {
     private int[] value;
 
     public IntArrayLogMessage(int[] value) {

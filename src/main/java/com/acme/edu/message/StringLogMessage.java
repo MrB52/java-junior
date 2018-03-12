@@ -1,9 +1,8 @@
 package com.acme.edu.message;
 
-import com.acme.edu.prefix.StringPrefixAdder;
 import com.acme.edu.visitor.FormatterVisitor;
 
-public class StringLogMessage extends LogMessage {
+public class StringLogMessage implements LogMessage {
     private String value;
     private int stringRepetitionCounter = 1;
 
@@ -13,10 +12,6 @@ public class StringLogMessage extends LogMessage {
 
     public String getValue() {
         return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
     }
 
     @Override
@@ -37,9 +32,7 @@ public class StringLogMessage extends LogMessage {
     public String toString() {
 
         if (stringRepetitionCounter > 1) {
-            return new StringBuilder(value).append(" (x")
-                                           .append(stringRepetitionCounter)
-                                           .append(")").toString();
+            return value + " (x" + stringRepetitionCounter + ")";
         }
         return value;
     }

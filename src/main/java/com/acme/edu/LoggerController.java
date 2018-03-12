@@ -12,22 +12,6 @@ public class LoggerController {
         this.printer = printer;
     }
 
-    public LogMessage getPreviousLogMessage() {
-        return previousLogMessage;
-    }
-
-    public void setPreviousLogMessage(LogMessage previousLogMessage) {
-        this.previousLogMessage = previousLogMessage;
-    }
-
-    public Printer getPrinter() {
-        return printer;
-    }
-
-    public void setPrinter(Printer printer) {
-        this.printer = printer;
-    }
-
     public void log(ByteLogMessage message, FormatterVisitor formatterVisitor) {
         checkReadinessForPrintOut(message, formatterVisitor);
 
@@ -104,6 +88,11 @@ public class LoggerController {
 
     public void log(ReferenceLogMessage message, FormatterVisitor formatterVisitor) {
         printer.printOut(formatterVisitor.formatLogMessage(message));
+    }
+
+    public void flush(FormatterVisitor formatterVisitor) {
+        printer.printOut(formatterVisitor.formatLogMessage(previousLogMessage));
+        previousLogMessage = null;
     }
 
     private void checkReadinessForPrintOut(LogMessage message, FormatterVisitor formatterVisitor) {
