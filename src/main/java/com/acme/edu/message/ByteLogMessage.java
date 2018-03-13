@@ -4,6 +4,9 @@ import com.acme.edu.visitor.FormatterVisitor;
 
 public class ByteLogMessage extends NumberLogMessage {
 
+    public ByteLogMessage() {
+    }
+
     public ByteLogMessage(long value) {
         setValue(value);
     }
@@ -21,15 +24,6 @@ public class ByteLogMessage extends NumberLogMessage {
 
     @Override
     public String toString() {
-
-        if (isUpperOverflowStatus()) {
-            return Long.toString(Byte.MAX_VALUE);
-        }
-
-        if (isLowerOverflowStatus()) {
-            return Long.toString(Byte.MIN_VALUE);
-        }
-
         return Long.toString(getValue());
     }
 }
