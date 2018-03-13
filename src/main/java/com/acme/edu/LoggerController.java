@@ -19,7 +19,7 @@ public class LoggerController {
 
         if (checkAccumulatingNecessity(message)) {
             previousLogMessage = getAccumulatedNumberLogMessage(message, Byte.MIN_VALUE, Byte.MAX_VALUE,
-                    formatterVisitor, ByteLogMessage::new);
+                                                                formatterVisitor, ByteLogMessage::new);
         }
     }
 
