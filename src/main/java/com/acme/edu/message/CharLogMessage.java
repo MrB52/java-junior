@@ -2,7 +2,7 @@ package com.acme.edu.message;
 
 import com.acme.edu.visitor.FormatterVisitor;
 
-public class CharLogMessage extends LogMessage {
+public class CharLogMessage implements LogMessage {
     private char value;
 
     public CharLogMessage(char value) {

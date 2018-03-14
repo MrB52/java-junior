@@ -4,6 +4,9 @@ import com.acme.edu.visitor.FormatterVisitor;
 
 public class IntLogMessage extends NumberLogMessage {
 
+    public IntLogMessage() {
+    }
+
     public IntLogMessage(long value) {
         setValue(value);
     }
@@ -21,15 +24,6 @@ public class IntLogMessage extends NumberLogMessage {
 
     @Override
     public String toString() {
-
-        if (isUpperOverflowStatus()) {
-            return Long.toString(Integer.MAX_VALUE);
-        }
-
-        if (isLowerOverflowStatus()) {
-            return Long.toString(Integer.MIN_VALUE);
-        }
-
         return Long.toString(getValue());
     }
 }

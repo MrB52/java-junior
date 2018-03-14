@@ -2,7 +2,7 @@ package com.acme.edu.message;
 
 import com.acme.edu.visitor.FormatterVisitor;
 
-public class ReferenceLogMessage extends LogMessage {
+public class ReferenceLogMessage implements LogMessage {
     private Object value;
 
     public ReferenceLogMessage(Object value) {

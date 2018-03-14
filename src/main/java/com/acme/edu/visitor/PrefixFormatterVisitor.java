@@ -3,6 +3,7 @@ package com.acme.edu.visitor;
 import com.acme.edu.message.*;
 
 public class PrefixFormatterVisitor implements FormatterVisitor {
+
     @Override
     public String formatByteLogMessage(ByteLogMessage message) {
         return "primitive: " + message;

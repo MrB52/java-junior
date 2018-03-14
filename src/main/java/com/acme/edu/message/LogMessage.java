@@ -1,20 +1,10 @@
 package com.acme.edu.message;
 
-import com.acme.edu.prefix.PrefixAdder;
 import com.acme.edu.visitor.FormatterVisitor;
 
-public abstract class LogMessage {
-    private PrefixAdder prefixAdder;
+public interface LogMessage {
 
-    protected PrefixAdder getPrefixAdder() {
-        return prefixAdder;
-    }
+    boolean isTypeMatched(LogMessage logMessage);
 
-    protected void setPrefixAdder(PrefixAdder prefixAdder) {
-        this.prefixAdder = prefixAdder;
-    }
-
-    public abstract boolean isTypeMatched(LogMessage logMessage);
-
-    public abstract String acceptFormatterVisitor(FormatterVisitor formatterVisitor);
+    String acceptFormatterVisitor(FormatterVisitor formatterVisitor);
 }

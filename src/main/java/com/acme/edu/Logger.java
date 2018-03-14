@@ -1,7 +1,6 @@
 package com.acme.edu;
 
 import com.acme.edu.message.*;
-import com.acme.edu.visitor.FormatterVisitor;
 import com.acme.edu.visitor.PrefixFormatterVisitor;
 
 public class Logger {
@@ -41,9 +40,6 @@ public class Logger {
 
     //TODO внести в LoggerController
     public static void flush() {
-        FormatterVisitor formatterVisitor = new PrefixFormatterVisitor();
-
-        loggerController.getPrinter().printOut(formatterVisitor.formatLogMessage(loggerController.getPreviousLogMessage()));
-        loggerController.setPreviousLogMessage(null);
+        loggerController.flush(new PrefixFormatterVisitor());
     }
 }

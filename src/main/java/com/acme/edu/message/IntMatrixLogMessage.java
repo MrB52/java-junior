@@ -2,7 +2,7 @@ package com.acme.edu.message;
 
 import com.acme.edu.visitor.FormatterVisitor;
 
-public class IntMatrixLogMessage extends LogMessage {
+public class IntMatrixLogMessage implements LogMessage {
     private int[][] value;
 
     public IntMatrixLogMessage(int[][] value) {
