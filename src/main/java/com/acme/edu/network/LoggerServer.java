@@ -17,8 +17,8 @@ public class LoggerServer {
                 Logger.log((Integer)serverInput.readObject());//int
                 Logger.log((Integer)serverInput.readObject());//int
                 Logger.log((Byte)serverInput.readObject());//byte
-                Logger.log((String)serverInput.readObject());//string
                 Logger.log((Byte)serverInput.readObject());//byte
+                Logger.log((String)serverInput.readObject());//string
                 Logger.log((int[])serverInput.readObject());//int[]
                 Logger.flush();
 
